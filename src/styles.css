@@ -394,6 +394,8 @@ a.resource-link:hover .resource-action svg { transform: translate(-3px, -3px); }
   .swap { animation: swap-in .28s var(--ease) both; }
   .section-head.reveal, .hero-copy.reveal { opacity: 1; transform: none; }
   .w { display: inline-block; opacity: 0; transform: translateY(.3em); transition: opacity .55s var(--ease) calc(var(--w, 0) * 70ms), transform .55s var(--ease) calc(var(--w, 0) * 70ms); }
+  /* WebKit clips animating text to its box, and Arabic ink overflows it. An invisible shadow widens that area without moving anything. */
+  .w, .reveal, .section-head .lead, .hero-copy > :not(h1), .j-copy { box-shadow: 0 0 0 .2em transparent; }
   .in-view .w { opacity: 1; transform: none; }
   .section-head .lead { opacity: 0; transition: opacity .6s ease .28s; }
   .section-head.in-view .lead { opacity: 1; }
