@@ -1,0 +1,7 @@
+{
+  "source": "RIFDAN-Data-Analytics release. Project and dashboard figures match validation/results in that repository. Public-release figures were relayed from the release session, since that suite writes no results file. Notebook counts were read from analysis.ipynb. None were rerun from this website's project.",
+  "project": { "script": "validate_project.py", "passed": 68, "total": 68 },
+  "dashboard": { "script": "validate_dashboard.cjs", "passed": 35, "total": 35 },
+  "publicRelease": { "script": "validate_public_release.py", "passed": 32, "total": 32 },
+  "notebook": { "cells": 41, "codeCells": 25, "markdownCells": 16 }
+}

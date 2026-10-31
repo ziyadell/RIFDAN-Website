@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# Copies of the analytics release stay byte-identical.
+public/dashboard/RIFDAN_Dashboard.html -text
+source/metrics.json -text

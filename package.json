@@ -1,0 +1,28 @@
+{
+  "name": "rifdan-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build-site-data.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run data && tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "verify:data": "node scripts/verify-data.mjs",
+    "verify:contrast": "node scripts/check-contrast.mjs",
+    "verify:rendered": "node scripts/verify-rendered.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.511.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "playwright-core": "^1.52.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

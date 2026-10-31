@@ -1,0 +1,32 @@
+[
+ {
+  "name": "kpis-light",
+  "width": 1400,
+  "height": 146
+ },
+ {
+  "name": "heatmap-light",
+  "width": 1400,
+  "height": 698
+ },
+ {
+  "name": "km-light",
+  "width": 1400,
+  "height": 1146
+ },
+ {
+  "name": "kpis-dark",
+  "width": 1400,
+  "height": 146
+ },
+ {
+  "name": "heatmap-dark",
+  "width": 1400,
+  "height": 698
+ },
+ {
+  "name": "km-dark",
+  "width": 1400,
+  "height": 1146
+ }
+]
