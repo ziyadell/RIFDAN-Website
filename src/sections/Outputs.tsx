@@ -85,10 +85,10 @@ export function Footer() {
           <div className="footer-about">
             <p>{footer.about}</p>
             <p className="footer-attribution">
-              {footer.attributionBefore}
+              {footer.attributionBefore}<bdi>{footer.attributionDataset}</bdi>{footer.attributionPublished}
               <External href={urls.source}>{footer.attributionPlatform}</External>
               {footer.attributionMiddle}
-              <External href={urls.license}>{footer.attributionLicense}</External>
+              <External href={urls.license}>{footer.attributionLicense}<bdi>{footer.attributionLicenseName}</bdi>)</External>
               {footer.attributionAfter}
             </p>
           </div>

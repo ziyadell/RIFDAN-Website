@@ -75,7 +75,13 @@ export function useRevealObserver() {
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    items.forEach((el) => io.observe(el));
+    const hero = document.querySelector('.hero-copy');
+    items.forEach((el) => { if (el !== hero) io.observe(el); });
+    // The hero enters once its heading's fonts have settled, so no visible frame uses a fallback or swaps mid-motion.
+    Promise.allSettled([
+      document.fonts.load('700 1em "IBM Plex Sans Arabic"', 'ر'),
+      document.fonts.load('700 1em "Plus Jakarta Sans"', 'R'),
+    ]).then(() => { if (hero) io.observe(hero); });
     return () => io.disconnect();
   }, []);
 }

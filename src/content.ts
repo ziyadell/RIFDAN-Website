@@ -11,9 +11,9 @@ export const num = (x: number, d = 0) => x.toLocaleString('en-US', { minimumFrac
  * (27.2%, +0.038) through invisible bidi isolates, everywhere they appear.
  */
 const isolate = (text: string) => text.replace(
-  /A sample of donations for different IDs in Ehsan|K-Means|\d[\d.,:]*%?[–-]\d[\d.,:]*%?(?!-)|(?:Log-rank p|p|C-index|Adjusted Rand) = [\d.]+|ODC Attribution License|[−+]\d[\d.,]*%?|\d[\d.,]*%/g,
-  // Short statistical expressions also stay on one line; the long dataset name may wrap.
-  (m) => `\u2066${m.length > 30 ? m : m.replace(/ /g, '\u00A0')}\u2069`,
+  /K-Means|\d[\d.,:]*%?[–-]\d[\d.,:]*%?(?!-)|(?:Log-rank p|p|C-index|Adjusted Rand) = [\d.]+|[−+]\d[\d.,]*%?|\d[\d.,]*%/g,
+  // Short statistical expressions also stay on one line.
+  (m) => `\u2066${m.replace(/ /g, '\u00A0')}\u2069`,
 );
 export const pct = (x: number, d = 1) => isolate(`${num(x, d)}%`);
 const signed = (x: number, d: number) => `${x < 0 ? '−' : '+'}${num(Math.abs(x), d)}`;
@@ -296,10 +296,14 @@ export const footer = fixBidi({
   linkedIn: 'LinkedIn',
   x: 'منصة إكس',
   // Clause 6.2 notice as worded in the release's ATTRIBUTION_AR.md, with its two URLs as links.
-  attributionBefore: 'يحتوي هذا العمل على معلومات من مجموعة البيانات «A sample of donations for different IDs in Ehsan» المنشورة في ',
+  // English names are isolated with <bdi> in the markup: WebKit does not wrap long runs inside isolate control characters.
+  attributionBefore: 'يحتوي هذا العمل على معلومات من مجموعة البيانات «',
+  attributionDataset: 'A sample of donations for different IDs in Ehsan',
+  attributionPublished: '» المنشورة في ',
   attributionPlatform: 'منصة البيانات المفتوحة السعودية',
   attributionMiddle: ' والمتاحة بموجب ',
-  attributionLicense: 'رخصة البيانات المفتوحة (ODC Attribution License)',
+  attributionLicense: 'رخصة البيانات المفتوحة (',
+  attributionLicenseName: 'ODC Attribution License',
   attributionAfter: '، النسخة 2.0. الملف المنظف والتجميعات والنتائج من إعداد مؤلف المشروع، ولا تعني اعتماد مانح الترخيص لها.',
 });
 
