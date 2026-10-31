@@ -422,6 +422,22 @@ await tp.touchscreen.tap(bb.x + bb.width * 0.4, bb.y + bb.height * 0.5);
 await tp.waitForTimeout(150);
 const tapTip = await chart.locator('.chart-tip').textContent();
 check('touch tap shows a chart value', tapTip.includes('لم يعودوا بعد'), tapTip.replace(/[⁦⁩]/g, '').slice(0, 50));
+for (const id of ['km', 'heatmap', 'kpis']) {
+  await tp.locator(`.shot-${id} .shot-trigger`).scrollIntoViewIfNeeded();
+  await tp.waitForTimeout(700);
+  await tp.locator(`.shot-${id} .shot-trigger`).tap();
+  await tp.waitForFunction(() => { const i = document.querySelector('[role=dialog] img'); return i?.complete && i.naturalWidth > 0; });
+  const fit = await tp.evaluate(() => {
+    const i = document.querySelector('[role=dialog] img');
+    const b = document.querySelector('.zoom-image');
+    const ir = i.getBoundingClientRect();
+    const br = b.getBoundingClientRect();
+    return ir.left >= br.left - 1 && ir.right <= br.right + 1 && b.scrollWidth <= b.clientWidth && Math.abs(ir.width / ir.height - i.naturalWidth / i.naturalHeight) < 0.03;
+  });
+  check(`phone preview ${id}: whole width visible, ratio preserved`, fit);
+  await tp.locator('.zoom-close').tap();
+  await tp.waitForTimeout(150);
+}
 await tp.locator('.menu-toggle').tap();
 check('mobile menu opens with five items', await tp.locator('.nav-links.open a').count() === 5);
 await tp.keyboard.press('Escape');
