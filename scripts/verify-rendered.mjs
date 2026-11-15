@@ -247,7 +247,7 @@ for (const card of ['.resource-dashboard', '.resource-report']) {
 }
 
 // --- 6. Hover tooltip, per chart ---
-for (const [name, want] of [['bands', '%'], ['km', 'لم يعودوا بعد'], ['cohorts', 'معرّفاً في الفوج'], ['cox', 'نسبة الخطر'], ['monthly', 'عملية'], ['hours', 'عملية']]) {
+for (const [name, want] of [['bands', '%'], ['km', 'لم يعودوا بعد'], ['cohorts', 'معرّفاً تبرعوا أول مرة'], ['cox', 'نسبة الخطر'], ['monthly', 'عملية'], ['hours', 'عملية']]) {
   const c = p.locator(`[data-chart="${name}"]`);
   await c.scrollIntoViewIfNeeded();
   const box = await c.boundingBox();

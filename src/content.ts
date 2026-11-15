@@ -129,7 +129,7 @@ export const returning = fixBidi({
   heading: 'متى يعود المتبرع',
   lead: 'يقيس تحليل البقاء (كابلان-ماير) المدة بين أول تبرع في العينة والتبرع الذي يليه. ومن لم يعد حتى نهاية الفترة لا يُحسب منقطعاً، بل تُعد مشاهدته غير مكتملة (مراقَبة).',
   facts: [
-    { value: num(f.cohort), label: 'معرّفاً في الفوج' },
+    { value: num(f.cohort), label: 'معرّفاً في تحليل العودة' },
     { value: pct(f.return30), label: 'عادوا خلال 30 يوماً' },
     { value: `${num(f.medianDays)} يوماً`, label: 'وسيط مدة العودة' },
     { value: num(f.censored), label: 'مشاهدة مراقَبة' },
@@ -139,8 +139,8 @@ export const returning = fixBidi({
   coxHeading: 'المبادرة الأولى، لا مبلغ التبرع الأول',
   coxBefore: `عند المقارنة بين فئتين فقط، يبدو أن من كان أول تبرع له بقيمة الوسيط أو أقل يعود أسرع: ${pct(f.lowMedian30)} مقابل ${pct(f.highMedian30)} خلال 30 يوماً (Log-rank p = ${num(f.logRankP, 4)}).`,
   coxAfter: `لكن هذا الأثر يختفي في نموذج Cox بعد ضبط أثر المبادرة: نسبة الخطر [[${num(f.coxFirstAmountHr, 3)}]] وقيمة p = ${num(f.coxFirstAmountP, 2)}. وقدرة النموذج على التمييز محدودة (C-index = ${num(f.coxConcordance, 3)})، أي أن العوامل المتاحة لا تفسر إلا جزءاً صغيراً من الاختلاف في سرعة العودة.`,
-  cohortTitle: 'العودة خلال 30 يوماً بحسب شهر الدخول',
-  cohortText: `ويختلف المعدل من شهر إلى آخر: في ${num(f.cohortCount)} فوجاً شهرياً تراوحت نسبة العودة بين ${pct(f.cohortMin)} و${pct(f.cohortMax)}، بوسيط ${pct(f.cohortMedian)}.`,
+  cohortTitle: 'العودة خلال 30 يوماً بحسب شهر أول تبرع',
+  cohortText: `ويختلف المعدل من شهر إلى آخر: تراوحت نسبة العودة في ${num(f.cohortCount)} شهراً بين ${pct(f.cohortMin)} و${pct(f.cohortMax)}، بوسيط ${pct(f.cohortMedian)}.`,
   cohortNote: 'لا تظهر إلا الأشهر التي دخل فيها 30 معرّفاً أو أكثر.',
 });
 

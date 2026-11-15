@@ -132,7 +132,7 @@ export function CohortChart() {
   return (
     <ColumnChart
       name="cohorts"
-      label={`أفواج الدخول: ${num(f.cohortCount)} فوجاً شهرياً تتراوح عودتها خلال 30 يوماً بين ${pct(f.cohortMin)} و${pct(f.cohortMax)} بوسيط ${pct(f.cohortMedian)}.`}
+      label={`العودة بحسب شهر أول تبرع: تراوحت نسبة العودة خلال 30 يوماً في ${num(f.cohortCount)} شهراً بين ${pct(f.cohortMin)} و${pct(f.cohortMax)}، بوسيط ${pct(f.cohortMedian)}.`}
       yMax={80}
       ticks={[0, 20, 40, 60, 80]}
       format={(t) => (Number.isInteger(t) ? `${t}%` : pct(t))}
@@ -149,7 +149,7 @@ export function CohortChart() {
           title: monthLabel(c.month),
           rows: [
             { value: pct(c.return_30d_pct), label: 'عادوا خلال 30 يوماً' },
-            { value: num(c.donors), label: 'معرّفاً في الفوج' },
+            { value: num(c.donors), label: 'معرّفاً تبرعوا أول مرة في هذا الشهر' },
           ],
         },
       }))}
@@ -158,7 +158,7 @@ export function CohortChart() {
 }
 
 export const cohortTable = {
-  head: ['شهر الدخول', 'عدد المعرّفات', 'العودة خلال 30 يوماً'],
+  head: ['شهر أول تبرع', 'عدد المعرّفات', 'العودة خلال 30 يوماً'],
   rows: data.cohorts.map((c) => [monthLabel(c.month), num(c.donors), pct(c.return_30d_pct)]),
 };
 
