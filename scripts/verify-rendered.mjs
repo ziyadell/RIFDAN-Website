@@ -156,7 +156,7 @@ const rangeShown = await p.evaluate(() => {
 });
 check('amount range reads low to high', rangeShown);
 const star = await p.locator('.star-cta').evaluate((el) => { const i = el.querySelector('svg'); return { svg: !!i, color: getComputedStyle(i).color, fill: getComputedStyle(i).fill, hidden: i.getAttribute('aria-hidden'), text: el.textContent.trim() }; });
-check('star icon is a golden SVG, label has no emoji', star.svg && star.color === 'rgb(231, 182, 91)' && star.hidden === 'true' && star.text === 'إذا ألهمك رفدان، ادعم المشروع بنجمة على GitHub' && !/[\u2B50\u2605\u2606]/u.test(text), star.color);
+check('star icon is a golden SVG, label has no emoji', star.svg && star.color === 'rgb(231, 182, 91)' && star.hidden === 'true' && star.text === 'إن أفادك رفدان، فادعم المشروع بنجمة على GitHub' && !/[\u2B50\u2605\u2606]/u.test(text), star.color);
 const logoFills = await p.evaluate(() => ({
   hero: getComputedStyle(document.querySelector('.emblem-arcs')).fill,
   bars: [...document.querySelectorAll('.emblem-bar')].map((b) => getComputedStyle(b).fill),
@@ -210,7 +210,7 @@ const j2 = await p.evaluate(() => ({ dash: parseFloat(getComputedStyle(document.
 check('journey line starts undrawn', j0.on === 0 && Math.abs(j0.dash - j0.total) < 1, JSON.stringify(j0));
 check('journey advances with scroll', j1.on === 3 && j1.dash > 0 && j1.dash < j0.total, JSON.stringify(j1));
 check('journey completes after the section', j2.on === 5 && j2.dash < 1, JSON.stringify(j2));
-check('journey navigation bar removed, all five stages kept', await p.evaluate(() => !document.querySelector('.j-rail, #journey nav') && document.querySelectorAll('.j-stage').length === 5 && [...document.querySelectorAll('.j-stage h3')].map((h) => h.textContent).join('|') === 'البيانات|التجهيز|التحليل|الرؤى|دعم القرار'));
+check('journey navigation bar removed, all five stages kept', await p.evaluate(() => !document.querySelector('.j-rail, #journey nav') && document.querySelectorAll('.j-stage').length === 5 && [...document.querySelectorAll('.j-stage h3')].map((h) => h.textContent).join('|') === 'البيانات|التجهيز|التحليل|الاستنتاجات|دعم القرار'));
 
 // --- Preview cards stay still through hover, leave and focus ---
 for (const card of ['.resource-dashboard', '.resource-report']) {

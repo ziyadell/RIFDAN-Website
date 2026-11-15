@@ -16,7 +16,7 @@ export function KmChart() {
   return (
     <ChartShell
       name="km"
-      label={`منحنى كابلان-ماير: عاد ${pct(f.return30)} خلال 30 يوماً و${pct(f.return90)} خلال 90 يوماً، ووسيط زمن العودة ${num(f.medianDays)} يوماً، على فوج من ${num(f.cohort)} معرّفاً.`}
+      label={`منحنى كابلان-ماير: عاد ${pct(f.return30)} خلال 30 يوماً و${pct(f.return90)} خلال 90 يوماً، ووسيط مدة العودة ${num(f.medianDays)} يوماً، على فوج من ${num(f.cohort)} معرّفاً.`}
       count={km.length}
       height={(w) => (w < 560 ? 300 : 420)}
       render={(frame) => {

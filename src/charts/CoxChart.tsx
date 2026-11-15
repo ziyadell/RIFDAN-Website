@@ -23,7 +23,7 @@ export function CoxChart() {
   return (
     <ChartShell
       name="cox"
-      label={`نسب الخطر: بعد ضبط المبادرة يبلغ أثر مبلغ أول تبرع ${num(f.coxFirstAmountHr, 3)} بقيمة p = ${num(f.coxFirstAmountP, 2)}، ولا تدل عليه النتيجة. المبادرتان الدالتان الحملات المخصصة ${num(f.coxCampaignsHr, 2)} وزكاة الفطر ${num(f.coxFitrHr, 2)}.`}
+      label={`نسب الخطر: بعد ضبط المبادرة يبلغ أثر مبلغ أول تبرع ${num(f.coxFirstAmountHr, 3)} بقيمة p = ${num(f.coxFirstAmountP, 2)}، وهو غير دال إحصائياً. والمبادرتان الدالتان إحصائياً: الحملات المخصصة ${num(f.coxCampaignsHr, 2)} وزكاة الفطر ${num(f.coxFitrHr, 2)}.`}
       count={terms.length}
       rows={() => true}
       height={(w) => terms.length * rowH(w) + AXIS}
